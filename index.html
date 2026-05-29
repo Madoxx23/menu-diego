@@ -188,7 +188,7 @@ body{background:#FBF0D9;font-family:'Poppins',sans-serif;color:var(--td);min-hei
 <header class="hdr">
   <div class="hdr-inner">
     <a class="hdr-logo" href="#" aria-label="San Diego Gelato and Food">
-      <img class="logo-img" src="img/img_1.webp" alt="San Diego Gelato &amp; Food">
+      <img loading="lazy" class="logo-img" src="img/img_1.webp" alt="San Diego Gelato &amp; Food">
     </a>
     <button class="cart-btn" onclick="openCart()" aria-label="Ver carrito">
       <svg class="cart-icon" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
@@ -498,7 +498,7 @@ function renderCart(){
   const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
   const items=cart.map((item,i)=>`
     <div class="cart-item">
-      <div class="citem-icon">${IMG[item.id]?`<img src="${IMG[item.id]}" alt="">`:item.svg}</div>
+      <div class="citem-icon">${IMG[item.id]?`<img loading="lazy" src="${IMG[item.id]}" alt="">`:item.svg}</div>
       <div class="citem-info">
         <div class="citem-name">${item.name}</div>
         <div class="citem-price">${fmt(item.price)} c/u</div>
@@ -576,7 +576,7 @@ function openProd(id){
   const p=ALL_ITEMS.find(x=>x.id===id);if(!p)return;
   curProd=p;dqtyVal=1;
   const mi=document.getElementById('pmodImg');
-  mi.innerHTML=IMG[p.id]?`<img src="${IMG[p.id]}" alt="${p.name}">`:`<div class="pmod-img-ph">${p.svg}</div>`;
+  mi.innerHTML=IMG[p.id]?`<img loading="lazy" src="${IMG[p.id]}" alt="${p.name}">`:`<div class="pmod-img-ph">${p.svg}</div>`;
   document.getElementById('pmodName').textContent=p.name;
   document.getElementById('pmodPrice').textContent=fmt(p.price);
   document.getElementById('pmodDesc').textContent=p.desc;
